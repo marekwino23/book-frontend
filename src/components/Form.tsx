@@ -1,21 +1,21 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { bookSchema, BookFormData } from "../types/Bookschema"
+import { bookSchema, BookFormData } from "../types/booksSchema"
 import "../styles/Form.css";
 import { Link } from "react-router-dom"
 
 const Form = () => {
-     const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<BookFormData>({
-    resolver: zodResolver(bookSchema),
-  });
+    const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<BookFormData>({
+  resolver: zodResolver(bookSchema) as any,
+});
 
   const onSubmit = async (data: BookFormData) => {
     try {
-      const res = await fetch("http://localhost:4000/add-book", {
+      const res = await fetch("https://book-backend-6rn3.onrender.com/add-book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -58,21 +58,13 @@ const Form = () => {
         </div>
 
         <div className="fancy-input">
-          <input
-            type="number"
-            {...register("number_of_pages", { valueAsNumber: true })}
-            placeholder=""
-          />
+          <input {...register("number_of_pages")} />
           <label>Liczba stron</label>
           <p>{errors.number_of_pages?.message}</p>
         </div>
 
         <div className="fancy-input">
-          <input
-            type="number"
-            {...register("rating", { valueAsNumber: true })}
-            placeholder=" "
-          />
+          <input {...register("rating")} />
           <label>Ocena (1-5)</label>
           <p>{errors.rating?.message}</p>
         </div>

@@ -14,7 +14,6 @@ type Book = {
 
 const AllBooks = () => {
   const [books, setBooks] = useState<Book[]>([]);
-  const [filter, setFilter] = useState("")
   const [word, setWord] = useState("")
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
@@ -22,7 +21,7 @@ const AllBooks = () => {
   useEffect(() => {
   const timeout = setTimeout(() => {
     fetch(
-      `http://localhost:4000/books?search=${word}&page=${page}&limit=6`
+      `https://book-backend-6rn3.onrender.com/books?search=${word}&page=${page}&limit=6`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -40,11 +39,6 @@ const AllBooks = () => {
         <h2>Lista książek</h2>
         <div style={{flexDirection:"row"}} className="fancy-input">
           <input onChange={(e) => setWord(e.target.value)} type="text" placeholder="" />
-          <select onChange={(e) => setFilter(e.target.value) }>
-            <option id="1" value="">Twój wybór</option>
-            <option id="2" value="title">Tytuł książki</option>
-            <option id="3" value="author">Autor</option>
-          </select>
         </div>
         <ul>
          {books
