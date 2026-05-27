@@ -42,31 +42,31 @@ const Form = () => {
         <div className="fancy-input">
           <input {...register("title")} placeholder=" " />
           <label>Tytuł książki</label>
-          <p>{errors.title?.message}</p>
+          <p style={{color:"red"}}>{errors.title?.message}</p>
         </div>
 
         <div className="fancy-input">
           <input {...register("author")} placeholder=" " />
           <label>Autor</label>
-          <p>{errors.author?.message}</p>
+          <p style={{color:"red"}}>{errors.author?.message}</p>
         </div>
 
         <div className="fancy-input">
           <input {...register("isbn")} placeholder=" " />
           <label>ISBN</label>
-          <p>{errors.isbn?.message}</p>
+          <p style={{color:"red"}}>{errors.isbn?.message}</p>
         </div>
 
         <div className="fancy-input">
           <input {...register("number_of_pages")} />
           <label>Liczba stron</label>
-          <p>{errors.number_of_pages?.message}</p>
+          <p style={{color:"red"}}>{errors.number_of_pages?.message}</p>
         </div>
 
         <div className="fancy-input">
           <input {...register("rating")} />
           <label>Ocena (1-5)</label>
-          <p>{errors.rating?.message}</p>
+          <p style={{color:"red"}}>{errors.rating?.message}</p>
         </div>
       </div>
 
