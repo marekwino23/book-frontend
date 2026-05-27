@@ -37,7 +37,7 @@ const AllBooks = () => {
   return (
     <div className="books-container">
         <h2>Lista książek</h2>
-        <div style={{flexDirection:"row"}} className="fancy-input">
+        <div style={{flexDirection:"row", justifyContent:"center"}} className="fancy-input">
           <input onChange={(e) => setWord(e.target.value)} type="text" placeholder="" />
         </div>
         <ul>
